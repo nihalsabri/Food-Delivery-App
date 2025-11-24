@@ -1,11 +1,13 @@
 import { View, Text, FlatList, TextInput } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import MealCard from 'components/MealCard';
-export default function Meals() {
+import MealCard from '../components/MealCard';
+export default function Meals({ navigation }) {
   const [meals, setMeals] = useState([]);
 const [search, setSearch] = useState('');
   const [filteredMeals, setFilteredMeals] = useState([]);
+
+
   async function getMeals() {
     try {
       const res = await axios.get(`https://www.themealdb.com/api/json/v1/1/search.php?f=c`);
@@ -45,10 +47,15 @@ useEffect(() => {
       <FlatList 
       numColumns={2}
       data={filteredMeals}
-      renderItem={({item})=><MealCard meal={item}/>
-        
+      renderItem={({item})=><MealCard meal={item}
+      navigation={navigation}
+      
+
+      />
       }
        />
+
+
     </View>
         </View>
 
