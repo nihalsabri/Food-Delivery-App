@@ -1,4 +1,4 @@
-import { Button, Image, Text, TouchableOpacity, View } from "react-native";
+import { Button, Image, Pressable, StatusBar, Text, TouchableOpacity, View } from "react-native";
 import * as ImagePicker from 'expo-image-picker';
 import { Feather } from '@expo/vector-icons';
 import { useState } from "react";
@@ -27,20 +27,24 @@ async function uploadImg() {
 
     return (
         <View>
-            <Text>Profile Screen</Text>
-            <TouchableOpacity className="h-screen items-center justify-center"
+            <StatusBar barStyle="dark-content" />
+            <Text className="text-2xl font-bold text-orange-700 text-center my-4">Profile</Text>
+            {img &&
+<View className="items-center justify-center mt-1 ">
+<Image source={{ uri: img }} style={{ width: 200, height: 200, borderRadius: 100 }} />
+<Pressable  onPress={()=>{setImage(null)}} >
+    <Text className="text-red-500 mt-2">Remove Picture</Text>
+      </Pressable>
+
+</View>
+}
+            <TouchableOpacity className="mt-2  items-center justify-center"
              onPress={uploadImg} > 
               <Feather name="camera" size={24} color="black" />
-
              <Text>change profile picture</Text> 
           </TouchableOpacity>
 
-{img && 
-<View className="items-center justify-center mt-4">
-<Image source={{ uri: img }} style={{ width: 200, height: 200, borderRadius: 100 }} />
-<Button title="del img" onPress={()=>{setImage(null)}} />
-</View>
-}
+
         </View>
     );
 }

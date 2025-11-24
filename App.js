@@ -1,6 +1,5 @@
 import './global.css';
 import Meals from "screens/Meals";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native"; 
 import { createNativeStackNavigator } from "@react-navigation/native-stack"; 
 import Home from "./screens/Home";
@@ -8,7 +7,6 @@ import MealDetails from "./screens/mealDetails";
 import Splash1 from './screens/Splash1';
 import Splash2 from './screens/Splash2';
 import { ThemeProvider } from 'context/ThemeContext';
-import {  useState } from 'react';
 import Cart from './screens/Cart';
 import Profile from './screens/Profile';
 import { SafeAreaView } from 'react-native-safe-area-context';
